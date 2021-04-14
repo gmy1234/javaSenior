@@ -31,19 +31,43 @@ public class mapTest2 {
 
 
 
-//        6)将所有工资低于1000元的员工的工资上涨20%(通过取值实现)
+//        6)将所有工资低于10000元的员工的工资上涨20%(通过取值实现)
+        Set set1 = map.entrySet();
+
+        Iterator iter= set1.iterator();
+        while ( iter.hasNext()){
+            Object obj2 = iter.next();
+            Map.Entry m=( Map.Entry) obj2;
+
+            if( ( int )m.getValue() < 10000){
+               m.setValue( (int )m.getValue()* 1.2);
+            }
+
+        }
+        System.out.println(map);
+
+
+
+
+
+//        改变map中的key——value（键值对）其中的一个：
 
 //        1、entrySet()转成set，
 //        2构造迭代器，
 //        3将迭代器中的内容赋值给Object，
 //        4将Object转成Entry，5判断是否增加
 
+
+        //set里存的是key——value键值对集合
         Set set= map.entrySet();
+//        用于遍历
         Iterator iterator= set.iterator();
 
+
         while( iterator.hasNext()){
-            Object obj1= iterator.next();
-            Map.Entry entry=(Map.Entry)  obj1;
+
+            Object obj1= iterator.next();       // 将返回的元素付给Obj中 。
+            Map.Entry entry=(Map.Entry)  obj1;      //将Object转成Entry，
             if( (int )entry.getValue() < 10000){
                 map.put( ( String )entry.getKey(),( int ) entry.getValue()* 1.2);
             }
